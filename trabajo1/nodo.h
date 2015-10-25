@@ -8,14 +8,15 @@ class Nodo
 {
 private:
     string nombre;
-    int fase;
-    string* arista[];
+    int aristaSize;
+    Nodo* arista[10];
 
 public:
-    Nodo(string nombre, string* arista[]);
+    Nodo(string nombre);
+    int fase;
     string getNombre();
-    int getFase();
-    string* getArista();
+    void addArista(Nodo *par);
+    bool checkFase(int f);
 };
 
 #endif // NODO_H

@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     for(int i = 0; i < 15; i++)
         cin>>cartas[i];
     eliminarRepetidos(cartas);
+    cout<<"Resultado"<<endl;
     for(int j = 0; j < 15; j++)
         cout<<cartas[j]<<endl;
 

@@ -1,11 +1,10 @@
 #include "nodo.h"
 
-Nodo::Nodo(string nombre, string* arista[])
+Nodo::Nodo(string nombre)
 {
     this->nombre = nombre;
     fase = 0;
-    for(int i = 0; i<(*arista)->size();i++)
-        this->arista[i]=arista[i];
+    aristaSize = 0;
 }
 
 string Nodo::getNombre()
@@ -13,12 +12,17 @@ string Nodo::getNombre()
     return nombre;
 }
 
-int Nodo::getFase()
+void Nodo::addArista(Nodo *par)
 {
-    return fase;
+    arista[aristaSize++] = par;
 }
 
-string* Nodo::getArista()
+bool Nodo::checkFase(int f)
 {
-    return *arista;
+    for(int i = 0; i < aristaSize; i++)
+    {
+        if(arista[i]->fase == f)
+            return 0;
+    }
+    return 1;
 }
