@@ -1,8 +1,5 @@
 #include <QCoreApplication>
-#include <iostream>
 #include "diagrama.h"
-
-using namespace std;
 
 int main(int argc, char *argv[])
 {
@@ -90,7 +87,7 @@ int main(int argc, char *argv[])
     //donde todo pasa
     diagrama->print(diagrama->setFases());
 
-    cout<<"sigue funcionando :D"<<endl;
+//    cout<<"sigue funcionando :D"<<endl;
 
     return a.exec();
 }

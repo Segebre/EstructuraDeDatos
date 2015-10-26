@@ -24,7 +24,7 @@ int Diagrama::setFases()
             }
         }
     }
-    return faseActual;
+    return faseActual-1;
 }
 
 void Diagrama::print(int f)
