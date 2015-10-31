@@ -7,9 +7,9 @@ using namespace std;
 class Nodo
 {
 public:
-    Nodo(int numero);
+    Nodo();
     int numero;
-    int siguiente;
+    int next;
 };
 
 #endif // NODO_H

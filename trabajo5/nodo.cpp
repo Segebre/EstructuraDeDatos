@@ -1,8 +1,7 @@
 #include "nodo.h"
 
-Nodo::Nodo(int numero)
+Nodo::Nodo()
 {
-    this->numero = numero;
-    this->siguiente = NULL;
+    numero = -102030405;
 }
 
