@@ -1,7 +1,7 @@
 QT += core
 QT -= gui
 
-TARGET = trabajo8
+TARGET = borrame
 CONFIG += console
 CONFIG -= app_bundle
 

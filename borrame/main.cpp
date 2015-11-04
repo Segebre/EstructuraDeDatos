@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Nodo* primero;
+
 void agregar(int valor, Nodo *nodo);
 void borrar(int valor, Nodo *nodo);
 Nodo* buscar(int valor, Nodo *nodo);
@@ -13,6 +13,8 @@ void print(Nodo* nodo);
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+    Nodo *primero = NULL  ;
+    cout<<&primero<<endl;
     int opcMenu;
     int opcParam;
 
@@ -48,11 +50,11 @@ int main(int argc, char *argv[])
             }
             cout<<"Valor:"<<endl;
             cin>>opcParam;
-            borrar(opcParam, primero);break;
+            //borrar(opcParam, primero);break;
         case 3:
             cout<<"Valor:"<<endl;
             cin>>opcParam;
-            cout<<buscar(opcParam, primero)->valor<<endl;break;
+           // cout<<buscar(opcParam, primero)->valor<<endl;break;
         case 4:
             print(primero);break;
         }
@@ -63,28 +65,19 @@ int main(int argc, char *argv[])
 
 void agregar(int valor, Nodo* nodo)
 {
-    if(primero == NULL)
-        primero = new Nodo(valor);
-    else
-    {
-        if(nodo->valor > valor)
-        {
-            if(nodo->left == NULL)
-                nodo->left = new Nodo(valor);
-            else
-                agregar(valor, nodo->left);
-        }
-        else
-        {
-            if(nodo->right == NULL)
-                nodo->right = new Nodo(valor);
-            else
-                agregar(valor, nodo->right);
+    cout << &nodo<<endl;
+    if(nodo == NULL){
+        nodo = new Nodo(valor);
+    }else{
+        if(nodo->valor > valor){
+            agregar(valor,nodo->left);
+        }else{
+            agregar(valor,nodo->right);
         }
     }
 }
 
-void borrar(int valor, Nodo* nodo)
+/*void borrar(int valor, Nodo* nodo)
 {
     if(primero->valor == valor)
     {
@@ -159,7 +152,7 @@ Nodo* buscar(int valor, Nodo* nodo)
         return buscar(valor, nodo->left);
     return buscar(valor, nodo->right);
 
-}
+}*/
 
 void print(Nodo* nodo)
 {
