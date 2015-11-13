@@ -583,7 +583,9 @@ main.o: ../trabajo5/main.cpp ../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplicat
 		../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
+		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h \
+		../trabajo5/listacursor.h \
+		../trabajo5/nodo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../trabajo5/main.cpp
 
 nodo.o: ../trabajo5/nodo.cpp ../trabajo5/nodo.h
