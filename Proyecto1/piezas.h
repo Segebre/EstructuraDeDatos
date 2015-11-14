@@ -18,6 +18,7 @@ public:
     ArbolExp * arbol;
     int tamano;
     void keyPressEvent(QKeyEvent *event);
+    QTimer * timer;
     bool llego;
 
 signals:

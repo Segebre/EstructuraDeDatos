@@ -19,10 +19,11 @@ Piezas::Piezas()
     setFocus();
 
     //le da el tamano a los bloques
-    setRect(0, 0, tamano*100-2, 100);
+    setRect(0, 0, tamano*100-1, 100);
+    setPos(0, -100);
 
     //controla el tiempo de cada paso para abajo
-    QTimer * timer = new QTimer();
+    timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 
     //que tan seguido en milisegundos baja
@@ -32,6 +33,8 @@ Piezas::Piezas()
 //se mueve hacia abajo
 void Piezas::move()
 {
+    /*for(int i = 0; scene()->itemAt(i*100,200, QTransform()) != NULL; i++)
+        cout<<i<<endl;*/
     if(!llego)
     {
         if(y()+200 <= 1000 && collidingItems().size() == 0)
@@ -40,6 +43,7 @@ void Piezas::move()
         {
             llego = 1;
             Piezas * pieza = new Piezas();
+            pieza->setBrush(* new QBrush(Qt::red));
             scene()->addItem(pieza);
             pieza->setFocus();
         }
@@ -49,10 +53,13 @@ void Piezas::move()
 //se mueve hacia los lados
 void Piezas::keyPressEvent(QKeyEvent * event)
 {
-    if(event->key() == Qt::Key_Left && x()-100 >= 0)
+    if(event->key() == Qt::Key_Left && x()-100 >= 0 && scene()->itemAt(x()-50, y()+50, QTransform()) == 0)
         setPos(x()-100, y());
-    else if(event->key() == Qt::Key_Right && x()+tamano*100+100 <= 1000)
+    else if(event->key() == Qt::Key_Right && x()+tamano*100+100 <= 1000 && scene()->itemAt(x()+tamano*100+50, y()+50, QTransform()) == 0)
         setPos(x()+100, y());
-    else if(event->key() == Qt::Key_Down && y()+100 <= 1000)
-        setPos(x(), y()+100);
+    else if(event->key() == Qt::Key_Down && y()+200 <= 1000 && collidingItems().size() == 0)
+    {
+            setPos(x(),y()+100);
+            timer->start(1000);
+    }
 }

@@ -654,6 +654,8 @@ moc_piezas.cpp: ../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsScene \
 		../../../Qt/5.5/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.5/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.5/gcc_64/include/QtGui/QKeyEvent \
+		../../../Qt/5.5/gcc_64/include/QtCore/QList \
 		../Proyecto1/arbolexpr.h \
 		../Proyecto1/nodo.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
@@ -783,7 +785,30 @@ main.o: ../Proyecto1/main.cpp ../../../Qt/5.5/gcc_64/include/QtWidgets/QApplicat
 		../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Qt/5.5/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.5/gcc_64/include/QtGui/qinputmethod.h
+		../../../Qt/5.5/gcc_64/include/QtGui/qinputmethod.h \
+		../Proyecto1/game.h \
+		../Proyecto1/piezas.h \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/5.5/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsRectItem \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../../Qt/5.5/gcc_64/include/QtGui/qpainter.h \
+		../../../Qt/5.5/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.5/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QObject \
+		../../../Qt/5.5/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.5/gcc_64/include/QtGui/QKeyEvent \
+		../../../Qt/5.5/gcc_64/include/QtCore/QList \
+		../Proyecto1/arbolexpr.h \
+		../Proyecto1/nodo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Proyecto1/main.cpp
 
 arbolexpr.o: ../Proyecto1/arbolexpr.cpp ../Proyecto1/arbolexpr.h \
@@ -1021,6 +1046,8 @@ piezas.o: ../Proyecto1/piezas.cpp ../Proyecto1/piezas.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.5/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.5/gcc_64/include/QtGui/QKeyEvent \
+		../../../Qt/5.5/gcc_64/include/QtCore/QList \
 		../Proyecto1/arbolexpr.h \
 		../Proyecto1/nodo.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
@@ -1147,6 +1174,8 @@ game.o: ../Proyecto1/game.cpp ../Proyecto1/game.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.5/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.5/gcc_64/include/QtGui/QKeyEvent \
+		../../../Qt/5.5/gcc_64/include/QtCore/QList \
 		../Proyecto1/arbolexpr.h \
 		../Proyecto1/nodo.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \

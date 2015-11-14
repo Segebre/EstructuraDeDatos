@@ -4,7 +4,9 @@ Game::Game()
 {
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
-    scene->addItem(new Piezas());
+    Piezas * pieza = new Piezas();
+    pieza->setBrush(Qt::red);
+    scene->addItem(pieza);
 
     //quitamos las scroll bars
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
