@@ -49,9 +49,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../borrame/main.cpp \
-		../borrame/nodo.cpp 
+		../borrame/nodo.cpp \
+		../borrame/arbolexpr.cpp 
 OBJECTS       = main.o \
-		nodo.o
+		nodo.o \
+		arbolexpr.o
 DIST          = ../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt/5.5/gcc_64/mkspecs/common/linux.conf \
@@ -180,8 +182,10 @@ DIST          = ../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/exceptions.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/lex.prf \
-		../borrame/borrame.pro ../borrame/nodo.h ../borrame/main.cpp \
-		../borrame/nodo.cpp
+		../borrame/borrame.pro ../borrame/nodo.h \
+		../borrame/arbolexpr.h ../borrame/main.cpp \
+		../borrame/nodo.cpp \
+		../borrame/arbolexpr.cpp
 QMAKE_TARGET  = borrame
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = borrame
@@ -487,8 +491,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../borrame/nodo.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../borrame/main.cpp ../borrame/nodo.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../borrame/nodo.h ../borrame/arbolexpr.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../borrame/main.cpp ../borrame/nodo.cpp ../borrame/arbolexpr.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -583,8 +587,122 @@ main.o: ../borrame/main.cpp ../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplicati
 		../borrame/nodo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../borrame/main.cpp
 
-nodo.o: ../borrame/nodo.cpp ../borrame/nodo.h
+nodo.o: ../borrame/nodo.cpp ../borrame/nodo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nodo.o ../borrame/nodo.cpp
+
+arbolexpr.o: ../borrame/arbolexpr.cpp ../borrame/arbolexpr.h \
+		../borrame/nodo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o arbolexpr.o ../borrame/arbolexpr.cpp
 
 ####### Install
 

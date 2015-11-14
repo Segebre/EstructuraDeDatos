@@ -16,7 +16,7 @@ class Piezas : public QObject, public QGraphicsRectItem
     Q_OBJECT
 public:
     Piezas();
-    ArbolExp * arbol;
+    ArbolExpr * arbol;
     int tamano;
     void keyPressEvent(QKeyEvent *event);
     QTimer * timer;

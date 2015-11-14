@@ -16,10 +16,12 @@ SOURCES += main.cpp \
     arbolexpr.cpp \
     nodo.cpp \
     piezas.cpp \
-    game.cpp
+    game.cpp \
+    siguientes.cpp
 
 HEADERS  += \
     arbolexpr.h \
     nodo.h \
     piezas.h \
-    game.h
+    game.h \
+    siguientes.h

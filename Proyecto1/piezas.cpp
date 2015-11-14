@@ -5,7 +5,7 @@ extern Game * game;
 Piezas::Piezas()
 {
     //inicializa el arbol y el largo de cada bloque
-    arbol = new ArbolExp();
+    arbol = new ArbolExpr();
     tamano = arbol->resolver();
     llego = 0;
 

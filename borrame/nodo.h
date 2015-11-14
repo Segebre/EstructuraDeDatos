@@ -1,12 +1,15 @@
 #ifndef NODO_H
 #define NODO_H
+#include <iostream>
+#include <QCoreApplication>
 
+using namespace std;
 
 class Nodo
 {
 public:
-    Nodo(int valor);
-    int valor;
+    Nodo(char valor);
+    char valor;
     Nodo* left;
     Nodo* right;
 };
