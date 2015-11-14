@@ -9,6 +9,7 @@
 #include <QList>
 #include <typeinfo>
 #include "arbolexpr.h"
+#include "game.h"
 
 class Piezas : public QObject, public QGraphicsRectItem
 {

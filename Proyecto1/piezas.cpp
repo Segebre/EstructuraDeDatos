@@ -1,5 +1,7 @@
 #include "piezas.h"
 
+extern Game * game;
+
 Piezas::Piezas()
 {
     //inicializa el arbol y el largo de cada bloque
@@ -42,10 +44,7 @@ void Piezas::move()
         else
         {
             llego = 1;
-            Piezas * pieza = new Piezas();
-            pieza->setBrush(* new QBrush(Qt::red));
-            scene()->addItem(pieza);
-            pieza->setFocus();
+            game->update();
         }
     }
 }

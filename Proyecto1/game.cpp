@@ -11,10 +11,57 @@ Game::Game()
     //quitamos las scroll bars
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setFixedSize(1000,1000);
+    view->setFixedSize(1300,1000);
     view->show();
-    scene->setSceneRect(0, 0, 1000, 1000);
+    scene->setSceneRect(0, 0, 1300, 1000);
 }
 
+void Game::update()
+{
+    Piezas * pieza = new Piezas();
+    pieza->setBrush(* new QBrush(Qt::red));
+    scene->addItem(pieza);
+    pieza->setFocus();
+    int eliminar = check();
+    if(eliminar != -1)
+        removeLine(eliminar);
+}
+
+int Game::check()
+{
+    for(int i = 9; i >= 0; i--)
+    {
+        for(int j = 0; j < 10; j++)
+        {
+            if(scene->itemAt(j*100+50, i*100+50, QTransform()) == 0)
+                break;
+            if(j == 9)
+                return i;
+        }
+    }
+    return -1;
+}
+
+void Game::removeLine(int row)
+{
+    QGraphicsItem * block;
+
+    //elimina los bloques
+    for(int i = 0; i < 10; i++)
+    {
+        block = scene->itemAt(i*100+50, row*100+50, QTransform());
+        if(block != 0)
+            scene->removeItem(block);
+    }
+
+    //corre los bloques
+    QList<QGraphicsItem *> cubitos = scene->items();
+    cout<<cubitos.size()<<endl;
+    for(int i = 0; i < cubitos.size(); i++)
+    {
+        if(cubitos[i]->y() < row*100)
+            cubitos[i]->setPos(cubitos[i]->x(), cubitos[i]->y()+100);
+    }
+}
 
 
