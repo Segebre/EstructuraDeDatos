@@ -8,9 +8,11 @@ public:
     Game();
     QGraphicsScene * scene;
     QGraphicsView * view;
+    int score;
     void update();
     int check();
     void removeLine(int row);
+    void over();
 
 signals:
 

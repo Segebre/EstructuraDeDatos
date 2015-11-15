@@ -12,6 +12,7 @@ public:
     char getExpr();
     int resolver();
     void newData();
+    string getString();
     void print();
 };
 

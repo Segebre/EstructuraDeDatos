@@ -57,6 +57,11 @@ int ArbolExpr::resolver(int num, char op, int num2)
     }
 }
 
+string ArbolExpr::getString()
+{
+    return "(" + int(raiz->left->left->valor) + raiz->left->valor + int(raiz->left->right->valor) + ")" + raiz->valor + "(" + int(raiz->right->left->valor) + raiz->right->valor + int(raiz->right->right->valor) + ")";
+}
+
 void ArbolExpr::print()
 {
     cout<<"("<<int(raiz->left->left->valor)<<raiz->left->valor<<int(raiz->left->right->valor)<<")"<<raiz->valor<<"("<<int(raiz->right->left->valor)<<raiz->right->valor<<int(raiz->right->right->valor)<<")"<<endl;

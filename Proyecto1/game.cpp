@@ -2,6 +2,7 @@
 
 Game::Game()
 {
+    score = 0;
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
     Piezas * pieza = new Piezas();
@@ -45,7 +46,7 @@ int Game::check()
 void Game::removeLine(int row)
 {
     QGraphicsItem * block;
-
+    score+=10;
     //elimina los bloques
     for(int i = 0; i < 10; i++)
     {
@@ -62,6 +63,16 @@ void Game::removeLine(int row)
         if(cubitos[i]->y() < row*100)
             cubitos[i]->setPos(cubitos[i]->x(), cubitos[i]->y()+100);
     }
+}
+
+void Game::over()
+{
+    cout<<"termino"<<endl;
+    score = 0;
+    scene->clear();
+    Piezas * pieza = new Piezas();
+    pieza->setBrush(Qt::red);
+    scene->addItem(pieza);
 }
 
 

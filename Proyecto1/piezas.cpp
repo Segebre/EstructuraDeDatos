@@ -10,7 +10,7 @@ Piezas::Piezas()
     llego = 0;
 
     //Busca una expression que se resuelva entre el rango
-    while(tamano <= 0 || tamano >= 10)
+    while(tamano <= 0 || tamano > 10)
     {
         arbol->newData();
         tamano = arbol->resolver();
@@ -44,7 +44,11 @@ void Piezas::move()
         else
         {
             llego = 1;
-            game->update();
+            game->score+=2;
+            if(y() == -100)
+                game->over();
+            else
+                game->update();
         }
     }
 }
