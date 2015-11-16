@@ -1,15 +1,18 @@
 #ifndef SIGUIENTES_H
 #define SIGUIENTES_H
 #include <QString>
-#include <QGraphicsTextItem>
-#include "piezas.h"
+#include <QQueue>
+#include <QLabel>
+#include "arbolexpr.h"
 
-class Siguientes : public QGraphicsTextItem
+class Siguientes
 {
 public:
     Siguientes();
-    
-    int update(QString nuevo);
+    QQueue<ArbolExpr> queue;
+    QLabel * label;
+    int siguienteValor();
+    void updateSiguientes();
 
 signals:
 

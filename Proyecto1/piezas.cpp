@@ -2,11 +2,11 @@
 
 extern Game * game;
 
-Piezas::Piezas()
+Piezas::Piezas(int tamano)
 {
     //inicializa el arbol y el largo de cada bloque
     arbol = new ArbolExpr();
-    tamano = arbol->resolver();
+    this->tamano = tamano;
     llego = 0;
 
     //Busca una expression que se resuelva entre el rango

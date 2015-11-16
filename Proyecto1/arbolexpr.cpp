@@ -3,13 +3,7 @@
 ArbolExpr::ArbolExpr()
 {
     srand(time(0));
-    raiz = new Nodo(getExpr());
-    raiz->left = new Nodo(getExpr());
-    raiz->right = new Nodo(getExpr());
-    raiz->left->left = new Nodo(rand()%10 + 1);
-    raiz->left->right = new Nodo(rand()%10 + 1);
-    raiz->right->left = new Nodo(rand()%10 + 1);
-    raiz->right->right = new Nodo(rand()%10 + 1);
+    newData();
 }
 
 char ArbolExpr::getExpr()
@@ -28,13 +22,34 @@ char ArbolExpr::getExpr()
 //reinizializa el arbol
 void ArbolExpr::newData()
 {
-    raiz = new Nodo(getExpr());
-    raiz->left = new Nodo(getExpr());
-    raiz->right = new Nodo(getExpr());
-    raiz->left->left = new Nodo(rand()%10 + 1);
-    raiz->left->right = new Nodo(rand()%10 + 1);
-    raiz->right->left = new Nodo(rand()%10 + 1);
-    raiz->right->right = new Nodo(rand()%10 + 1);
+    do
+    {
+        raiz = new Nodo(getExpr());
+        raiz->left = new Nodo(getExpr());
+        raiz->right = new Nodo(getExpr());
+        raiz->left->left = new Nodo(rand()%10 + 1);
+        raiz->left->right = new Nodo(rand()%10 + 1);
+        raiz->right->left = new Nodo(rand()%10 + 1);
+        raiz->right->right = new Nodo(rand()%10 + 1);
+    }while(resolver() <= 0 || resolver() > 10);
+}
+
+QString ArbolExpr::getString()
+{
+    QString stringer;
+    stringer.append("(");
+    stringer.append(QString::number(raiz->left->left->valor));
+    stringer.append(raiz->left->valor);
+    stringer.append(QString::number(raiz->left->right->valor));
+    stringer.append(")");
+    stringer.append(raiz->valor);
+    stringer.append("(");
+    stringer.append(QString::number(raiz->right->left->valor));
+    stringer.append(raiz->right->valor);
+    stringer.append(QString::number(raiz->right->right->valor));
+    stringer.append(") = ");
+    stringer.append(QString::number(resolver()));
+    return stringer;
 }
 
 int ArbolExpr::resolver()

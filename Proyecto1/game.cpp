@@ -7,28 +7,34 @@ Game::Game()
     view = new QGraphicsView(scene);
     log = new Log();
     scores = new Score();
-    Piezas * pieza = new Piezas();
+    siguientes = new Siguientes();
+    Piezas * pieza = new Piezas(siguientes->siguienteValor());
+    siguientes->label->adjustSize();
     pieza->setBrush(Qt::red);
     scene->addItem(pieza);
     log->label->move(1000, 0);
     log->label->adjustSize();
-    scores->label->move(1350, 0);
+    scores->label->move(1360, 0);
     scores->label->adjustSize();
+    siguientes->label->move(1460, 0);
+    siguientes->label->adjustSize();
     proxyWidgetLog = scene->addWidget(log->label);
     proxyWidgetScores = scene->addWidget(scores->label);
+    proxyWidgetSiguientes = scene->addWidget(siguientes->label);
 
     //quitamos las scroll bars
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setFixedSize(1500,1000);
+    view->setFixedSize(1650,1000);
     view->show();
-    scene->setSceneRect(0, 0, 1500, 1000);
+    scene->setSceneRect(0, 0, 1650, 1000);
 }
 
 void Game::update()
 {
     log->addPuntos(2, score);
-    Piezas * pieza = new Piezas();
+    Piezas * pieza = new Piezas(siguientes->siguienteValor());
+    siguientes->label->adjustSize();
     pieza->setBrush(* new QBrush(Qt::red));
     scene->addItem(pieza);
     pieza->setFocus();
@@ -96,7 +102,8 @@ void Game::over()
     scores->addScore(score);
     score = 0;
     //scene->clear();
-    Piezas * pieza = new Piezas();
+    Piezas * pieza = new Piezas(siguientes->siguienteValor());
+    siguientes->label->adjustSize();
     pieza->setBrush(Qt::red);
     scene->addItem(pieza);
     log->label->clear();

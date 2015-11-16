@@ -4,6 +4,7 @@
 #include "piezas.h"
 #include "log.h"
 #include "score.h"
+#include "siguientes.h"
 
 class Game : public QGraphicsView
 {
@@ -13,8 +14,10 @@ public:
     QGraphicsView * view;
     Log * log;
     Score * scores;
+    Siguientes * siguientes;
     QGraphicsProxyWidget *proxyWidgetLog;
     QGraphicsProxyWidget *proxyWidgetScores;
+    QGraphicsProxyWidget *proxyWidgetSiguientes;
     int score;
     void update();
     int check();
