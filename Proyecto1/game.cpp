@@ -6,12 +6,16 @@ Game::Game()
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
     log = new Log();
+    scores = new Score();
     Piezas * pieza = new Piezas();
     pieza->setBrush(Qt::red);
     scene->addItem(pieza);
     log->label->move(1000, 0);
     log->label->adjustSize();
-    proxyWidget = scene->addWidget(log->label);
+    scores->label->move(1350, 0);
+    scores->label->adjustSize();
+    proxyWidgetLog = scene->addWidget(log->label);
+    proxyWidgetScores = scene->addWidget(scores->label);
 
     //quitamos las scroll bars
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -77,16 +81,41 @@ void Game::removeLine(int row)
 
 void Game::over()
 {
+    //prueba
+    QList<QGraphicsItem *> itemosos = scene->items();
+    for(int i = 0; i < itemosos.size(); i++)
+    {
+        if(itemosos[i]->x() < 1000)
+        {
+            scene->removeItem(itemosos[i]);
+        }
+    }
+
+
     //cout<<"termino"<<endl;
+    scores->addScore(score);
     score = 0;
-    scene->clear();
+    //scene->clear();
     Piezas * pieza = new Piezas();
     pieza->setBrush(Qt::red);
     scene->addItem(pieza);
-    log = new Log();
-    log->label->move(1000, 0);
+    log->label->clear();
+    log->stak1.clear();
+    QString temporal;
+    temporal.append("Juego ");
+    temporal.append(QString::number(scores->jugados+1));
+    temporal.append(" Inizializado!");
+    log->stak1.push(temporal);
+    log->updateLog();
+    //log = new Log();
+    //log->label->move(1000, 0);
+    //log->label->adjustSize();
+    //proxyWidgetLog = scene->addWidget(log->label);
+
+    //Scores
+    /*log->label->move(1000, 0);
     log->label->adjustSize();
-    proxyWidget = scene->addWidget(log->label);
+    *///proxyWidgetScores = scene->addWidget(scores->label);
 }
 
 

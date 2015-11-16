@@ -1,8 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
+#include <QLabel>
 #include "piezas.h"
 #include "log.h"
-#include <QLabel>
+#include "score.h"
 
 class Game : public QGraphicsView
 {
@@ -11,7 +12,9 @@ public:
     QGraphicsScene * scene;
     QGraphicsView * view;
     Log * log;
-    QGraphicsProxyWidget *proxyWidget;
+    Score * scores;
+    QGraphicsProxyWidget *proxyWidgetLog;
+    QGraphicsProxyWidget *proxyWidgetScores;
     int score;
     void update();
     int check();

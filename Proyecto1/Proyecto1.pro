@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     piezas.cpp \
     game.cpp \
     siguientes.cpp \
-    log.cpp
+    log.cpp \
+    score.cpp
 
 HEADERS  += \
     arbolexpr.h \
@@ -26,4 +27,5 @@ HEADERS  += \
     piezas.h \
     game.h \
     siguientes.h \
-    log.h
+    log.h \
+    score.h
