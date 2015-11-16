@@ -16,9 +16,9 @@ Game::Game()
     //quitamos las scroll bars
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setFixedSize(1300,1000);
+    view->setFixedSize(1500,1000);
     view->show();
-    scene->setSceneRect(0, 0, 1300, 1000);
+    scene->setSceneRect(0, 0, 1500, 1000);
 }
 
 void Game::update()
@@ -77,7 +77,7 @@ void Game::removeLine(int row)
 
 void Game::over()
 {
-    cout<<"termino"<<endl;
+    //cout<<"termino"<<endl;
     score = 0;
     scene->clear();
     Piezas * pieza = new Piezas();

@@ -41,6 +41,7 @@ void Log::updateLog()
 {
     QString stringer;
     QString log;
+    log.append("--------------------\n|| In-Game Log ||\n--------------------\n\n");
     while(!stak1.empty())
     {
         stringer = stak1.pop();
