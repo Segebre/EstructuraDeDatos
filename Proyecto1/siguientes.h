@@ -8,6 +8,7 @@ class Siguientes : public QGraphicsTextItem
 {
 public:
     Siguientes();
+    
     int update(QString nuevo);
 
 signals:
