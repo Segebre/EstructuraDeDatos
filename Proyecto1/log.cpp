@@ -25,7 +25,7 @@ void Log::eliminoFila(int num, int score)
 {
     QString stringer;
     stringer.append("Se ha eliminado la fila ");
-    stringer.append(num+48);
+    stringer.append(QString::number(20-num));
     stak1.push(stringer);
     addPuntos(10, score);
 }

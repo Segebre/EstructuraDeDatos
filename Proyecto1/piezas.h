@@ -15,12 +15,15 @@ class Piezas : public QObject, public QGraphicsRectItem
     Q_OBJECT
 public:
     Piezas(int tamano);
+    Piezas(int tamano, int pos);
     ArbolExpr * arbol;
-    int tamano;
+    int width;
+    int height;
+    int color;
     void keyPressEvent(QKeyEvent *event);
     QTimer * timer;
     bool llego;
-
+    void pintar(int color);
 signals:
 
 public slots:

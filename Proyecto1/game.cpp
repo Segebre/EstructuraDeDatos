@@ -10,13 +10,13 @@ Game::Game()
     siguientes = new Siguientes();
     Piezas * pieza = new Piezas(siguientes->siguienteValor());
     siguientes->label->adjustSize();
-    pieza->setBrush(Qt::red);
+    pieza->pintar(pieza->color);
     scene->addItem(pieza);
-    log->label->move(1000, 0);
+    log->label->move(500, 0);
     log->label->adjustSize();
-    scores->label->move(1360, 0);
+    scores->label->move(860, 0);
     scores->label->adjustSize();
-    siguientes->label->move(1460, 0);
+    siguientes->label->move(960, 0);
     siguientes->label->adjustSize();
     proxyWidgetLog = scene->addWidget(log->label);
     proxyWidgetScores = scene->addWidget(scores->label);
@@ -25,9 +25,9 @@ Game::Game()
     //quitamos las scroll bars
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setFixedSize(1650,1000);
+    view->setFixedSize(1150,1000);
     view->show();
-    scene->setSceneRect(0, 0, 1650, 1000);
+    scene->setSceneRect(0, 0, 1150, 1000);
 }
 
 void Game::update()
@@ -35,7 +35,7 @@ void Game::update()
     log->addPuntos(2, score);
     Piezas * pieza = new Piezas(siguientes->siguienteValor());
     siguientes->label->adjustSize();
-    pieza->setBrush(* new QBrush(Qt::red));
+    pieza->pintar(pieza->color);//pieza->setBrush(* new QBrush(Qt::red));
     scene->addItem(pieza);
     pieza->setFocus();
     int eliminar = check();
@@ -45,11 +45,11 @@ void Game::update()
 
 int Game::check()
 {
-    for(int i = 9; i >= 0; i--)
+    for(int i = 19; i >= 0; i--)
     {
         for(int j = 0; j < 10; j++)
         {
-            if(scene->itemAt(j*100+50, i*100+50, QTransform()) == 0)
+            if(scene->itemAt(j*50+25, i*50+25, QTransform()) == 0)
                 break;
             if(j == 9)
                 return i;
@@ -65,22 +65,27 @@ void Game::removeLine(int row)
     //elimina los bloques
     for(int i = 0; i < 10; i++)
     {
-        block = scene->itemAt(i*100+50, row*100+50, QTransform());
+        block = scene->itemAt(i*50+25, row*50+25, QTransform());
         if(block != 0)
+        {
             scene->removeItem(block);
+            //delete block;-----------------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        }
     }
 
     //corre los bloques
     QList<QGraphicsItem *> cubitos = scene->items();
-    cout<<cubitos.size()<<endl;
     for(int i = 0; i < cubitos.size(); i++)
     {
-        if(cubitos[i]->x() < 1000)
+        if(cubitos[i]->x() < 500)
         {
-            if(cubitos[i]->y() < row*100)
-                cubitos[i]->setPos(cubitos[i]->x(), cubitos[i]->y()+100);
+            if(cubitos[i]->y() < row*50)
+                cubitos[i]->setPos(cubitos[i]->x(), cubitos[i]->y()+50);
         }
     }
+    int eliminar = check();
+    if(eliminar != -1)
+        this->removeLine(eliminar);
     log->eliminoFila(row, score);
     log->label->adjustSize();
 }
@@ -91,7 +96,7 @@ void Game::over()
     QList<QGraphicsItem *> itemosos = scene->items();
     for(int i = 0; i < itemosos.size(); i++)
     {
-        if(itemosos[i]->x() < 1000)
+        if(itemosos[i]->x() < 500)
         {
             scene->removeItem(itemosos[i]);
         }
@@ -104,7 +109,7 @@ void Game::over()
     //scene->clear();
     Piezas * pieza = new Piezas(siguientes->siguienteValor());
     siguientes->label->adjustSize();
-    pieza->setBrush(Qt::red);
+    pieza->pintar(pieza->color);
     scene->addItem(pieza);
     log->label->clear();
     log->stak1.clear();
