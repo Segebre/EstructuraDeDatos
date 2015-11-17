@@ -23,6 +23,9 @@ Game::Game()
     proxyWidgetSiguientes = scene->addWidget(siguientes->label);
 
     //quitamos las scroll bars
+    view->setRenderHint(QPainter::Antialiasing);
+    view->setBackgroundBrush(QPixmap("qrc:/Icons/space-background1.png"));
+    view->setWindowTitle(QT_TRANSLATE_NOOP(QGraphicsView, "1 Line Tetris"));
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setFixedSize(1150,1000);
@@ -30,8 +33,11 @@ Game::Game()
     scene->setSceneRect(0, 0, 1150, 1000);
 
     QMediaPlayer * music = new QMediaPlayer();
-    music->setMedia(QUrl("qrc:/Sounds/song.mp3"));
+    music->setMedia(QUrl("qrc:/Sounds/RainingTacos.mp3"));
     music->play();
+
+    clearSound = new QSoundEffect(this);
+    clearSound->setSource(QUrl("qrc:/Sounds/linedelete.wav"));
 }
 
 void Game::update()
@@ -90,6 +96,7 @@ void Game::removeLine(int row)
     int eliminar = check();
     if(eliminar != -1)
         this->removeLine(eliminar);
+    clearSound->play();
     log->eliminoFila(row, score);
     log->label->adjustSize();
 }

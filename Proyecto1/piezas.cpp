@@ -24,6 +24,9 @@ Piezas::Piezas(int width)
 
     //que tan seguido en milisegundos baja
     timer->start(1000);
+
+    moveSound = new QSoundEffect(this);
+    moveSound->setSource(QUrl("qrc:/Sounds/move.wav"));
 }
 
 Piezas::Piezas(int corX, int corY)
@@ -44,6 +47,10 @@ void Piezas::move()
         cout<<i<<endl;*/
     if(!llego)
     {
+        if(moveSound->isPlaying())
+            moveSound->stop();
+        moveSound->play();
+
         if(y()+height*50+50 <= 1000 && collidingItems().size() == 0)
             setPos(x(),y()+50);
         else
@@ -86,7 +93,12 @@ void Piezas::keyPressEvent(QKeyEvent * event)
             }
         }
         if(sePuede)
+        {
             setPos(x()-50, y());
+            if(moveSound->isPlaying())
+                moveSound->stop();
+            moveSound->play();
+        }
     }
     else if(event->key() == Qt::Key_Right && x()+width*50+50 <= 500)
     {
@@ -100,12 +112,20 @@ void Piezas::keyPressEvent(QKeyEvent * event)
             }
         }
         if(sePuede)
+        {
             setPos(x()+50, y());
+            if(moveSound->isPlaying())
+                moveSound->stop();
+            moveSound->play();
+        }
     }
     else if(event->key() == Qt::Key_Down && y()+height*50+50 <= 1000 && collidingItems().size() == 0)
     {
             setPos(x(),y()+50);
             timer->start(1000);
+            if(moveSound->isPlaying())
+                moveSound->stop();
+            moveSound->play();
     }
     else if(event->key() == Qt::Key_Up)
     {

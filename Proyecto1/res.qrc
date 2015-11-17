@@ -3,5 +3,9 @@
         <file>linedelete.wav</file>
         <file>move.wav</file>
         <file>song.mp3</file>
+        <file>RainingTacos.mp3</file>
+    </qresource>
+    <qresource prefix="/Icons">
+        <file>space-background1.png</file>
     </qresource>
 </RCC>

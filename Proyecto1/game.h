@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 #include <QLabel>
+#include <QImage>
+#include <QMediaPlayer>
 #include "piezas.h"
 #include "log.h"
 #include "score.h"
@@ -18,6 +20,7 @@ public:
     QGraphicsProxyWidget *proxyWidgetLog;
     QGraphicsProxyWidget *proxyWidgetScores;
     QGraphicsProxyWidget *proxyWidgetSiguientes;
+    QSoundEffect * clearSound;
     int score;
     void update();
     int check();

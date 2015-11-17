@@ -7,7 +7,7 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include <QList>
-#include <QMediaPlayer>
+#include <QSoundEffect>
 #include "arbolexpr.h"
 #include "game.h"
 
@@ -23,6 +23,7 @@ public:
     int color;
     void keyPressEvent(QKeyEvent *event);
     QTimer * timer;
+    QSoundEffect * moveSound;
     bool llego;
     void pintar(int color);
 signals:
