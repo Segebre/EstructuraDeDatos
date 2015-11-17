@@ -28,6 +28,10 @@ Game::Game()
     view->setFixedSize(1150,1000);
     view->show();
     scene->setSceneRect(0, 0, 1150, 1000);
+
+    QMediaPlayer * music = new QMediaPlayer();
+    music->setMedia(QUrl("qrc:/Sounds/song.mp3"));
+    music->play();
 }
 
 void Game::update()

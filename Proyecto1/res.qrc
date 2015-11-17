@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/Sounds">
+        <file>linedelete.wav</file>
+        <file>move.wav</file>
+        <file>song.mp3</file>
+    </qresource>
+</RCC>

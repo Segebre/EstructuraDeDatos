@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include <QList>
+#include <QMediaPlayer>
 #include "arbolexpr.h"
 #include "game.h"
 
