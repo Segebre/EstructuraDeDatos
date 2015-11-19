@@ -43,6 +43,7 @@ Piezas::Piezas(int corX, int corY)
 //se mueve hacia abajo
 void Piezas::move()
 {
+    //meter music check aqui-----------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     /*for(int i = 0; scene()->itemAt(i*100,200, QTransform()) != NULL; i++)
         cout<<i<<endl;*/
     if(!llego)

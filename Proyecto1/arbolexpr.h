@@ -1,6 +1,6 @@
 #ifndef ARBOLEXPR_H
 #define ARBOLEXPR_H
-#include "nodo.h"
+#include "nodoarbol.h"
 
 class ArbolExpr
 {
@@ -8,7 +8,7 @@ private:
     int resolver(int num, char op, int num2);
 public:
     ArbolExpr();
-    Nodo* raiz;
+    NodoArbol* raiz;
     char getExpr();
     int resolver();
     void newData();

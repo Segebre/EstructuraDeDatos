@@ -1,15 +1,15 @@
 #ifndef SCORE_H
 #define SCORE_H
 #include <QString>
-#include <QStack>
 #include <QLabel>
+#include "pila.h"
 
 class Score
 {
 public:
     Score();
-    QStack<QString> stak1;
-    QStack<QString> stak2;
+    Pila stak1;
+    Pila stak2;
     QLabel * label;
     int jugados;
     void addScore(int score);

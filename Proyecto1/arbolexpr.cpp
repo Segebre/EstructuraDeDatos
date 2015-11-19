@@ -24,13 +24,13 @@ void ArbolExpr::newData()
 {
     do
     {
-        raiz = new Nodo(getExpr());
-        raiz->left = new Nodo(getExpr());
-        raiz->right = new Nodo(getExpr());
-        raiz->left->left = new Nodo(rand()%10 + 1);
-        raiz->left->right = new Nodo(rand()%10 + 1);
-        raiz->right->left = new Nodo(rand()%10 + 1);
-        raiz->right->right = new Nodo(rand()%10 + 1);
+        raiz = new NodoArbol(getExpr());
+        raiz->left = new NodoArbol(getExpr());
+        raiz->right = new NodoArbol(getExpr());
+        raiz->left->left = new NodoArbol(rand()%10 + 1);
+        raiz->left->right = new NodoArbol(rand()%10 + 1);
+        raiz->right->left = new NodoArbol(rand()%10 + 1);
+        raiz->right->right = new NodoArbol(rand()%10 + 1);
     }while(resolver() <= 0 || resolver() > 10);
 }
 

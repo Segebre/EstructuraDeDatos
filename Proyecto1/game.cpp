@@ -33,8 +33,8 @@ Game::Game()
     scene->setSceneRect(0, 0, 1150, 1000);
 
     QMediaPlayer * music = new QMediaPlayer();
-    music->setMedia(QUrl("qrc:/Sounds/RainingTacos.mp3"));
-    music->play();
+    music->setMedia(QUrl("qrc:/Sounds/song.mp3"));
+    //music->play();
 
     clearSound = new QSoundEffect(this);
     clearSound->setSource(QUrl("qrc:/Sounds/linedelete.wav"));

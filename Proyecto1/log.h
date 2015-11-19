@@ -1,15 +1,15 @@
 #ifndef LOG_H
 #define LOG_H
 #include <QString>
-#include <QStack>
 #include <QLabel>
+#include "pila.h"
 
 class Log
 {
 public:
     Log();
-    QStack<QString> stak1;
-    QStack<QString> stak2;
+    Pila stak1;
+    Pila stak2;
     QLabel * label;
     void addPuntos(int num, int score);
     void eliminoFila(int num, int score);

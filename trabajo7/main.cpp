@@ -53,23 +53,26 @@ void push(int valor)
 Nodo* pop()
 {
     Nodo *i = ultimo;
-    if(i->next == NULL)
-        ultimo = NULL;
-    else{
-        while( i->next->next != NULL)
-        {
+    if(i != NULL)
+    {
+        if(i->next == NULL)
+            ultimo = NULL;
+        else{
+            while( i->next->next != NULL)
+            {
+                i = i->next;
+            }
+            Nodo* temp = i;
             i = i->next;
+            temp->next = NULL;
         }
-        Nodo* temp = i;
-        i = i->next;
-        temp->next = NULL;
     }
     return i;
 }
 
 void print()
 {
-    cout<<"\n\n-------------Pila-------------"<<endl;
+    cout<<"\n\n-------------Cola-------------"<<endl;
     for(Nodo *i = ultimo; i != NULL; i = i->next)
     {
         cout<<i->valor<<endl;

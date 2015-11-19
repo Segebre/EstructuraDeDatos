@@ -1,15 +1,14 @@
 #ifndef SIGUIENTES_H
 #define SIGUIENTES_H
 #include <QString>
-#include <QQueue>
 #include <QLabel>
-#include "arbolexpr.h"
+#include "cola.h"
 
 class Siguientes
 {
 public:
     Siguientes();
-    QQueue<ArbolExpr> queue;
+    Cola pila;
     QLabel * label;
     int siguienteValor();
     void updateSiguientes();

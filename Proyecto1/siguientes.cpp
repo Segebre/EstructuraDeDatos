@@ -5,19 +5,16 @@ Siguientes::Siguientes()
     label = new QLabel();
     ArbolExpr arbol;
     for(int i = 0; i < 10;i++)
-    {
-        arbol.newData();
-        queue.enqueue(arbol);
-    }
+        pila.push(arbol);
     updateSiguientes();
 }
 
 int Siguientes::siguienteValor()
 {
-    ArbolExpr temp = queue.dequeue();
+    ArbolExpr temp = pila.pop();
     int retorn = temp.resolver();
     temp.newData();
-    queue.enqueue(temp);
+    pila.push(temp);
     updateSiguientes();
     return retorn;
 }
@@ -29,10 +26,10 @@ void Siguientes::updateSiguientes()
     stringer.append("----------------\n|| Siguiente ||\n----------------\n\n");
     for(int i = 0; i < 10;i++)//while(!queue.empty())
     {
-        temp = queue.dequeue();
+        temp = pila.pop();
         stringer.append(temp.getString());
         stringer.append("\n");
-        queue.enqueue(temp);
+        pila.push(temp);
     }
     label->setText(stringer);
 }

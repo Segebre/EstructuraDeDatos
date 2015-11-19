@@ -50,21 +50,29 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Proyecto1/main.cpp \
 		../Proyecto1/arbolexpr.cpp \
-		../Proyecto1/nodo.cpp \
 		../Proyecto1/piezas.cpp \
 		../Proyecto1/game.cpp \
 		../Proyecto1/siguientes.cpp \
 		../Proyecto1/log.cpp \
-		../Proyecto1/score.cpp qrc_res.cpp \
+		../Proyecto1/score.cpp \
+		../Proyecto1/nodoarbol.cpp \
+		../Proyecto1/nodocola.cpp \
+		../Proyecto1/cola.cpp \
+		../Proyecto1/nodopila.cpp \
+		../Proyecto1/pila.cpp qrc_res.cpp \
 		moc_piezas.cpp
 OBJECTS       = main.o \
 		arbolexpr.o \
-		nodo.o \
 		piezas.o \
 		game.o \
 		siguientes.o \
 		log.o \
 		score.o \
+		nodoarbol.o \
+		nodocola.o \
+		cola.o \
+		nodopila.o \
+		pila.o \
 		qrc_res.o \
 		moc_piezas.o
 DIST          = ../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
@@ -198,19 +206,27 @@ DIST          = ../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/lex.prf \
 		../Proyecto1/Proyecto1.pro ../Proyecto1/arbolexpr.h \
-		../Proyecto1/nodo.h \
 		../Proyecto1/piezas.h \
 		../Proyecto1/game.h \
 		../Proyecto1/siguientes.h \
 		../Proyecto1/log.h \
-		../Proyecto1/score.h ../Proyecto1/main.cpp \
+		../Proyecto1/score.h \
+		../Proyecto1/nodoarbol.h \
+		../Proyecto1/nodocola.h \
+		../Proyecto1/cola.h \
+		../Proyecto1/nodopila.h \
+		../Proyecto1/pila.h ../Proyecto1/main.cpp \
 		../Proyecto1/arbolexpr.cpp \
-		../Proyecto1/nodo.cpp \
 		../Proyecto1/piezas.cpp \
 		../Proyecto1/game.cpp \
 		../Proyecto1/siguientes.cpp \
 		../Proyecto1/log.cpp \
-		../Proyecto1/score.cpp
+		../Proyecto1/score.cpp \
+		../Proyecto1/nodoarbol.cpp \
+		../Proyecto1/nodocola.cpp \
+		../Proyecto1/cola.cpp \
+		../Proyecto1/nodopila.cpp \
+		../Proyecto1/pila.cpp
 QMAKE_TARGET  = Proyecto1
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = Proyecto1
@@ -531,8 +547,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Proyecto1/res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto1/arbolexpr.h ../Proyecto1/nodo.h ../Proyecto1/piezas.h ../Proyecto1/game.h ../Proyecto1/siguientes.h ../Proyecto1/log.h ../Proyecto1/score.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto1/main.cpp ../Proyecto1/arbolexpr.cpp ../Proyecto1/nodo.cpp ../Proyecto1/piezas.cpp ../Proyecto1/game.cpp ../Proyecto1/siguientes.cpp ../Proyecto1/log.cpp ../Proyecto1/score.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto1/arbolexpr.h ../Proyecto1/piezas.h ../Proyecto1/game.h ../Proyecto1/siguientes.h ../Proyecto1/log.h ../Proyecto1/score.h ../Proyecto1/nodoarbol.h ../Proyecto1/nodocola.h ../Proyecto1/cola.h ../Proyecto1/nodopila.h ../Proyecto1/pila.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto1/main.cpp ../Proyecto1/arbolexpr.cpp ../Proyecto1/piezas.cpp ../Proyecto1/game.cpp ../Proyecto1/siguientes.cpp ../Proyecto1/log.cpp ../Proyecto1/score.cpp ../Proyecto1/nodoarbol.cpp ../Proyecto1/nodocola.cpp ../Proyecto1/cola.cpp ../Proyecto1/nodopila.cpp ../Proyecto1/pila.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -690,7 +706,7 @@ moc_piezas.cpp: ../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsScene \
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/qsoundeffect.h \
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
 		../Proyecto1/arbolexpr.h \
-		../Proyecto1/nodo.h \
+		../Proyecto1/nodoarbol.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
 		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h \
@@ -720,6 +736,8 @@ moc_piezas.cpp: ../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsScene \
 		../Proyecto1/siguientes.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QQueue \
 		../../../Qt/5.5/gcc_64/include/QtCore/qqueue.h \
+		../Proyecto1/cola.h \
+		../Proyecto1/nodocola.h \
 		../Proyecto1/piezas.h
 	/home/segebre/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/segebre/Qt/5.5/gcc_64/mkspecs/linux-g++ -I'/home/segebre/Documents/Estructura de Datos/Proyecto1' -I/home/segebre/Qt/5.5/gcc_64/include -I/home/segebre/Qt/5.5/gcc_64/include/QtMultimedia -I/home/segebre/Qt/5.5/gcc_64/include/QtWidgets -I/home/segebre/Qt/5.5/gcc_64/include/QtGui -I/home/segebre/Qt/5.5/gcc_64/include/QtNetwork -I/home/segebre/Qt/5.5/gcc_64/include/QtCore -I. ../Proyecto1/piezas.h -o moc_piezas.cpp
 
@@ -886,7 +904,7 @@ main.o: ../Proyecto1/main.cpp ../../../Qt/5.5/gcc_64/include/QtWidgets/QApplicat
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/QSoundEffect \
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/qsoundeffect.h \
 		../Proyecto1/arbolexpr.h \
-		../Proyecto1/nodo.h \
+		../Proyecto1/nodoarbol.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
 		../Proyecto1/log.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QStack \
@@ -894,11 +912,13 @@ main.o: ../Proyecto1/main.cpp ../../../Qt/5.5/gcc_64/include/QtWidgets/QApplicat
 		../Proyecto1/score.h \
 		../Proyecto1/siguientes.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QQueue \
-		../../../Qt/5.5/gcc_64/include/QtCore/qqueue.h
+		../../../Qt/5.5/gcc_64/include/QtCore/qqueue.h \
+		../Proyecto1/cola.h \
+		../Proyecto1/nodocola.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Proyecto1/main.cpp
 
 arbolexpr.o: ../Proyecto1/arbolexpr.cpp ../Proyecto1/arbolexpr.h \
-		../Proyecto1/nodo.h \
+		../Proyecto1/nodoarbol.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
 		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -955,64 +975,6 @@ arbolexpr.o: ../Proyecto1/arbolexpr.cpp ../Proyecto1/arbolexpr.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o arbolexpr.o ../Proyecto1/arbolexpr.cpp
-
-nodo.o: ../Proyecto1/nodo.cpp ../Proyecto1/nodo.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
-		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nodo.o ../Proyecto1/nodo.cpp
 
 piezas.o: ../Proyecto1/piezas.cpp ../Proyecto1/piezas.h \
 		../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsScene \
@@ -1138,7 +1100,7 @@ piezas.o: ../Proyecto1/piezas.cpp ../Proyecto1/piezas.h \
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/qsoundeffect.h \
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
 		../Proyecto1/arbolexpr.h \
-		../Proyecto1/nodo.h \
+		../Proyecto1/nodoarbol.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
 		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h \
@@ -1166,7 +1128,9 @@ piezas.o: ../Proyecto1/piezas.cpp ../Proyecto1/piezas.h \
 		../Proyecto1/score.h \
 		../Proyecto1/siguientes.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QQueue \
-		../../../Qt/5.5/gcc_64/include/QtCore/qqueue.h
+		../../../Qt/5.5/gcc_64/include/QtCore/qqueue.h \
+		../Proyecto1/cola.h \
+		../Proyecto1/nodocola.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o piezas.o ../Proyecto1/piezas.cpp
 
 game.o: ../Proyecto1/game.cpp ../Proyecto1/game.h \
@@ -1311,7 +1275,7 @@ game.o: ../Proyecto1/game.cpp ../Proyecto1/game.h \
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/QSoundEffect \
 		../../../Qt/5.5/gcc_64/include/QtMultimedia/qsoundeffect.h \
 		../Proyecto1/arbolexpr.h \
-		../Proyecto1/nodo.h \
+		../Proyecto1/nodoarbol.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
 		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h \
@@ -1321,7 +1285,9 @@ game.o: ../Proyecto1/game.cpp ../Proyecto1/game.h \
 		../Proyecto1/score.h \
 		../Proyecto1/siguientes.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QQueue \
-		../../../Qt/5.5/gcc_64/include/QtCore/qqueue.h
+		../../../Qt/5.5/gcc_64/include/QtCore/qqueue.h \
+		../Proyecto1/cola.h \
+		../Proyecto1/nodocola.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../Proyecto1/game.cpp
 
 siguientes.o: ../Proyecto1/siguientes.cpp ../Proyecto1/siguientes.h \
@@ -1432,8 +1398,10 @@ siguientes.o: ../Proyecto1/siguientes.cpp ../Proyecto1/siguientes.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
+		../Proyecto1/cola.h \
+		../Proyecto1/nodocola.h \
 		../Proyecto1/arbolexpr.h \
-		../Proyecto1/nodo.h \
+		../Proyecto1/nodoarbol.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
 		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
@@ -1658,6 +1626,264 @@ score.o: ../Proyecto1/score.cpp ../Proyecto1/score.h \
 		../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o score.o ../Proyecto1/score.cpp
+
+nodoarbol.o: ../Proyecto1/nodoarbol.cpp ../Proyecto1/nodoarbol.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nodoarbol.o ../Proyecto1/nodoarbol.cpp
+
+nodocola.o: ../Proyecto1/nodocola.cpp ../Proyecto1/nodocola.h \
+		../Proyecto1/arbolexpr.h \
+		../Proyecto1/nodoarbol.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nodocola.o ../Proyecto1/nodocola.cpp
+
+cola.o: ../Proyecto1/cola.cpp ../Proyecto1/cola.h \
+		../Proyecto1/nodocola.h \
+		../Proyecto1/arbolexpr.h \
+		../Proyecto1/nodoarbol.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplication \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cola.o ../Proyecto1/cola.cpp
+
+nodopila.o: ../Proyecto1/nodopila.cpp ../Proyecto1/nodopila.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QString \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nodopila.o ../Proyecto1/nodopila.cpp
+
+pila.o: ../Proyecto1/pila.cpp ../Proyecto1/pila.h \
+		../Proyecto1/nodopila.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/QString \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pila.o ../Proyecto1/pila.cpp
 
 qrc_res.o: qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_res.o qrc_res.cpp

@@ -15,21 +15,29 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     arbolexpr.cpp \
-    nodo.cpp \
     piezas.cpp \
     game.cpp \
     siguientes.cpp \
     log.cpp \
-    score.cpp
+    score.cpp \
+    nodoarbol.cpp \
+    nodocola.cpp \
+    cola.cpp \
+    nodopila.cpp \
+    pila.cpp
 
 HEADERS  += \
     arbolexpr.h \
-    nodo.h \
     piezas.h \
     game.h \
     siguientes.h \
     log.h \
-    score.h
+    score.h \
+    nodoarbol.h \
+    nodocola.h \
+    cola.h \
+    nodopila.h \
+    pila.h
 
 RESOURCES += \
     res.qrc
