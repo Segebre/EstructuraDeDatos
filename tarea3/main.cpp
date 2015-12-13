@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
         case 1:
             agregar(opcParam);break;
         case 2:
-            buscar(opcParam);break;
+            cout<<buscar(opcParam)<<endl;break;
         case 3:
             borrar(opcParam);break;
         case 4:

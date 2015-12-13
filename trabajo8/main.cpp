@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     int opcMenu;
     int opcParam;
 
-    agregar(5, &primero);
     /*agregar(7, &primero);
     agregar(6, &primero);
     agregar(9, &primero);

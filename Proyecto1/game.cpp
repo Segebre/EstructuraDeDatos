@@ -34,7 +34,7 @@ Game::Game()
 
     QMediaPlayer * music = new QMediaPlayer();
     music->setMedia(QUrl("qrc:/Sounds/song.mp3"));
-    //music->play();
+    music->play();
 
     clearSound = new QSoundEffect(this);
     clearSound->setSource(QUrl("qrc:/Sounds/linedelete.wav"));
@@ -79,7 +79,6 @@ void Game::removeLine(int row)
         if(block != 0)
         {
             scene->removeItem(block);
-            //delete block;-----------------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         }
     }
 

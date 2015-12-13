@@ -6,12 +6,10 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     ListaCursor lista;
-    lista.newCursor(1);
     int opcMenu;
     int opcParam;
     int opcParam2;
     int temp;
-    lista.newCursor(23);//////////
     do
     {
         cout<<"\n---------------Menu---------------- "<<endl;

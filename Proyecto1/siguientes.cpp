@@ -5,7 +5,10 @@ Siguientes::Siguientes()
     label = new QLabel();
     ArbolExpr arbol;
     for(int i = 0; i < 10;i++)
+    {
         pila.push(arbol);
+        arbol.newData();
+    }
     updateSiguientes();
 }
 

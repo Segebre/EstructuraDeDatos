@@ -15,8 +15,8 @@ class Piezas : public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
-    Piezas(int tamano);
-    Piezas(int tamano, int pos);
+    Piezas(int width);
+    Piezas(int X, int Y);
     ArbolExpr * arbol;
     int width;
     int height;

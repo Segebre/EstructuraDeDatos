@@ -60,7 +60,6 @@ void Piezas::move()
             {
                 int corX = x();
                 int corY = y();
-                int colorTemp = color;
                 scene()->removeItem(this);
                 for(int i = 0; i < height; i++)
                 {
@@ -71,7 +70,7 @@ void Piezas::move()
             }
             llego = 1;
             game->score+=2;
-            if(y() == -50)
+            if(y() < 0)
                 game->over();
             else
                 game->update();
