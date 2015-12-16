@@ -8,7 +8,7 @@ public:
     Prim();
     int siguiente;
     bool chequeado;
-    static const int cantidadDeNodos = 5;
+    static const int cantidadDeNodos = 8;
     int mapa[cantidadDeNodos][4];
     Nodo * nodos[8];
     void agregarNodo(Nodo * nodo);

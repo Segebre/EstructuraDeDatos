@@ -8,12 +8,10 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    nodo.cpp \
     arista.cpp \
     kruskal.cpp
 
 HEADERS += \
-    nodo.h \
     arista.h \
     kruskal.h
 

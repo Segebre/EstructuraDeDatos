@@ -1,0 +1,54 @@
+0 Ahuas
+1 Amapala
+2 Balfate
+3 Belen
+4 Brus Laguna
+5 Cabanas
+6 Carida
+7 Catacamas
+8 Choluteca
+9 Comayagua
+10 Copan Ruinas
+11 Danli
+12 Dolores
+13 El Progreso
+14 El Triunfo
+15 Esparta
+16 Florida
+17 Gracias
+18 Guanaja
+19 Iriona
+20 Juticalpa
+21 La Ceiba
+22 La Esperanza
+23 La Paz
+24 Llama
+25 Minas de Oro
+26 Nacaome
+27 Nueva Ocotepeque
+28 Olanchito
+29 Puerto Cortes
+30 Puerto Lempira
+31 Roatan
+32 San Andrea
+33 San Antonio
+34 San Esteban
+35 San Ignacio
+36 San Isidro
+37 San Jorge
+38 San Juan de Flores
+39 San Pedro Sula
+40 Santa Barrbara
+41 Santa Cruz de Yojoa
+42 Santa Fe
+43 Santa Maria
+44 Santa Rosa de Copan
+45 Soledad
+46 Taulabe
+47 Tegucigalpa
+48 Tela
+49 Trinidad
+50 Trujillo
+51 Utila
+52 Yoro
+53 Yuscaran

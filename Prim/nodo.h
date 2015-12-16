@@ -7,7 +7,7 @@ class Nodo
 public:
     Nodo(int numero);
     int numero;
-    Arista * aristas[4];
+    Arista * aristas[5];
     void addArista(Arista * arista);
 
 private:

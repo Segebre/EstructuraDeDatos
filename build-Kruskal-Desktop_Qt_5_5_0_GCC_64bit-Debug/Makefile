@@ -49,11 +49,9 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Kruskal/main.cpp \
-		../Kruskal/nodo.cpp \
 		../Kruskal/arista.cpp \
 		../Kruskal/kruskal.cpp 
 OBJECTS       = main.o \
-		nodo.o \
 		arista.o \
 		kruskal.o
 DIST          = ../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
@@ -184,10 +182,8 @@ DIST          = ../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/exceptions.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/features/lex.prf \
-		../Kruskal/Kruskal.pro ../Kruskal/nodo.h \
-		../Kruskal/arista.h \
+		../Kruskal/Kruskal.pro ../Kruskal/arista.h \
 		../Kruskal/kruskal.h ../Kruskal/main.cpp \
-		../Kruskal/nodo.cpp \
 		../Kruskal/arista.cpp \
 		../Kruskal/kruskal.cpp
 QMAKE_TARGET  = Kruskal
@@ -495,8 +491,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../Kruskal/nodo.h ../Kruskal/arista.h ../Kruskal/kruskal.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Kruskal/main.cpp ../Kruskal/nodo.cpp ../Kruskal/arista.cpp ../Kruskal/kruskal.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Kruskal/arista.h ../Kruskal/kruskal.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Kruskal/main.cpp ../Kruskal/arista.cpp ../Kruskal/kruskal.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -588,21 +584,13 @@ main.o: ../Kruskal/main.cpp ../../../Qt/5.5/gcc_64/include/QtCore/QCoreApplicati
 		../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
 		../../../Qt/5.5/gcc_64/include/QtCore/qeventloop.h \
-		../Kruskal/kruskal.h \
-		../Kruskal/nodo.h \
-		../Kruskal/arista.h
+		../Kruskal/kruskal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Kruskal/main.cpp
-
-nodo.o: ../Kruskal/nodo.cpp ../Kruskal/nodo.h \
-		../Kruskal/arista.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nodo.o ../Kruskal/nodo.cpp
 
 arista.o: ../Kruskal/arista.cpp ../Kruskal/arista.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o arista.o ../Kruskal/arista.cpp
 
-kruskal.o: ../Kruskal/kruskal.cpp ../Kruskal/kruskal.h \
-		../Kruskal/nodo.h \
-		../Kruskal/arista.h
+kruskal.o: ../Kruskal/kruskal.cpp ../Kruskal/kruskal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o kruskal.o ../Kruskal/kruskal.cpp
 
 ####### Install
